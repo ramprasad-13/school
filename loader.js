@@ -86,6 +86,8 @@ function sendMsg(){
   let ph_num=document.getElementById("number").value;
   let email=document.getElementById("email").value;
   let campus_email=(campus=='singarayakonda') ? "stjosephskonda@gmail.com" : "stjosephulavapadu1@gmail.com";
+  let enquiry_msg=document.getElementById("enquiry_msg");
+  enquiry_msg.innerHTML="";
 
   Email.send({
     Host : "smtp.elasticemail.com",
@@ -101,6 +103,9 @@ function sendMsg(){
     Phone Number : ${ph_num} <br>
     Email Id : ${email}`
   }).then(
-  message => alert(message)
+    enquiry_msg.innerHTML=`${std_name} we received Your enquiry, We will get back to you!`
 );
+setTimeout(()=>{
+  enquiry_msg.innerHTML=``
+},2000);
 }
